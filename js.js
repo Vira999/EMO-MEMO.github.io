@@ -3,6 +3,9 @@ const cards = document.querySelectorAll(".memory-card");
 let hasFlippedCard = false;
 let boardLocked = false;
 let firstCard, secondCard;
+
+var lowScore = localStorage.getItem("lowScore");
+let gameScore = 0;
 const resultDisplay= document.querySelector(`result`);
 const flipCard = e =>{
   if (boardLocked) return;
@@ -26,7 +29,10 @@ if (!hasFlippedCard) {
 }
 };
 
-
+function assignLowScore($lowScoreOutput) {
+  lowScore = lowScore || "N/A";
+  $lowScoreOutput.text("Low Score: " + lowScore);
+}
 checkForMatch = ()=>{
   const isEqual =firstCard.dataset.framework === secondCard.dataset.framework
   if (firstCard.dataset.framework === secondCard.dataset.framework) {
@@ -36,10 +42,7 @@ checkForMatch = ()=>{
     unflipCard();
    
   }
-  resultDisplay.textContent = cardsWon.lenght
-    if(cardsWon.lenght===cards.lenght/2){
-      resultDisplay.textContent = `Congratulation! You found them all!`
-    }
+  
   /*isEqual? disableCards():unflipCard();*/
 
   
