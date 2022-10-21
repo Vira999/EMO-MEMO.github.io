@@ -73,4 +73,4 @@ cards.forEach(card=> {
   const randomIndex = 
  Math.floor(Math.random()*cards.length);
  card.style.order = randomIndex;
-});i
+});
